@@ -1,20 +1,16 @@
-import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Provider from './Context/provider';
+import Home from './Components/Home';
 
-function App() {
-
-  const requestApi = async() => {
-    const request = await fetch('/medalists.json', {
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-    const resolve = await request.json();
-  }
-  requestApi()
+function App () {
   return (
-    <div>
-      Teste
-    </div>
+    <Provider>
+      <Router>
+        <Switch> 
+          <Route path='/' component={Home}/>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
